@@ -1,0 +1,6 @@
+@GraphQLApiGateway_HostAddress = http://localhost:5167
+
+GET {{GraphQLApiGateway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
