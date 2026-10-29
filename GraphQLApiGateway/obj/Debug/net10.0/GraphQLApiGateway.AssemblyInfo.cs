@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GraphQLApiGateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f059bbaa0256c736778a466b17d2a3e97efdf21")]
 [assembly: System.Reflection.AssemblyProductAttribute("GraphQLApiGateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GraphQLApiGateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

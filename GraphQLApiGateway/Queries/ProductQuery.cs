@@ -1,39 +1,58 @@
 ﻿using GraphQLApiGateway.Types;
 using ProductGrpcService;
+using ProductListResponse = GraphQLApiGateway.Types.ProductListResponse;
 
 namespace GraphQLApiGateway.Queries
 {
     public class ProductQuery
     {
-        public async Task<IEnumerable<ProductType>> GetProducts( [Service] ProductService.ProductServiceClient grpcClient)
+        public async Task<ProductListResponse> GetProductDetailsById( int productId,
+            [Service] ProductService.ProductServiceClient grpcClient)
+        {
+            // 1. Call the gRPC server using your request message
+            var grpcRequest = new ProductByIdRequest { Id = productId };
+            var response = await grpcClient.GetProductByIdAsync(grpcRequest);
+
+            // 2. Map gRPC response to your GraphQL Types
+            return new ProductListResponse
+            {
+                Product = new ProductType
+                {
+                    Id = response.Products.Id,
+                    Name = response.Products.Name,
+                    Description = response.Products.Description,
+                    Price = response.Products.Price,
+                    CategoryId= response.Products.CategoryId,
+                },
+                Category = new CategoryType
+                {
+                    Id = response.Category.Id,
+                    Name = response.Category.Name,
+                    Note = response.Category.Note
+                },
+                Inventory = new InventoryType
+                {
+                    Id = response.Inventory.Id,
+                    ProductId = response.Inventory.ProductId,
+                    StockQuantity = response.Inventory.StockQuantity,
+                }
+                
+            };
+            
+        }
+        public async Task<IEnumerable<ProductType>>GetAllProduct([Service] ProductService.ProductServiceClient grpcClient)
         {
             var response = await grpcClient.GetAllProductsAsync(new EmptyRequest());
-            return response.Products.Select(p => new ProductType
-            {
+            return response.Product.Select(p => new ProductType 
+            { 
                 Id = p.Id,
-                Name = p.Name,
+                Name= p.Name,
+                Description= p.Description,
                 Price = p.Price,
-                //Category = p.Category
+                CategoryId= p.CategoryId
             });
         }
-
-        public async Task<ProductType?> GetProductById( int id, [Service] ProductService.ProductServiceClient grpcClient)
-        {
-            try
-            {
-                var response = await grpcClient.GetProductByIdAsync(new ProductByIdRequest { Id = id });
-                return new ProductType
-                {
-                    Id = response.Id,
-                    Name = response.Name,
-                    Price = response.Price,
-                    //Category = response.Category
-                };
-            }
-            catch (Grpc.Core.RpcException)
-            {
-                return null;
-            }
-        }
+        
     }
+    
 }

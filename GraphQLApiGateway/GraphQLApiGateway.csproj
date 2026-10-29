@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -17,6 +17,6 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="16.7.2" />
   </ItemGroup>
 	<ItemGroup>
-		<Protobuf Include="Protos\product.proto" GrpcServices="Client" />
+		<Protobuf Include="Protos\*.proto" GrpcServices="Client" AdditionalImportDirs="Protos" />
 	</ItemGroup>
 </Project>
