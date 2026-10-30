@@ -6,5 +6,9 @@
         public string Name { get; set; }
         public string Note { get; set; }
     }
+    public class CategoryListResponse : CategoryType
+    {
+
+    }
 
 }

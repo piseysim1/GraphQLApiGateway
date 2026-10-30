@@ -6,7 +6,7 @@ namespace GraphQLApiGateway.Queries
 {
     public class ProductQuery
     {
-        public async Task<ProductListResponse> GetProductDetailsById( int productId,
+        public async Task<ProductListResponse> GetProductDetailsById(int productId,
             [Service] ProductService.ProductServiceClient grpcClient)
         {
             // 1. Call the gRPC server using your request message
@@ -40,9 +40,10 @@ namespace GraphQLApiGateway.Queries
             };
             
         }
-        public async Task<IEnumerable<ProductType>>GetAllProduct([Service] ProductService.ProductServiceClient grpcClient)
+        public async Task<IEnumerable<ProductType>>GetAllProduct( [Service] ProductService.ProductServiceClient grpcClient)
         {
-            var response = await grpcClient.GetAllProductsAsync(new EmptyRequest());
+            var response = await grpcClient.GetAllProductsAsync(
+                new EmptyRequest());
             return response.Product.Select(p => new ProductType 
             { 
                 Id = p.Id,
