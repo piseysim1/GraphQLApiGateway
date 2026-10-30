@@ -8,7 +8,8 @@ namespace GraphQLApiGateway.Extension
         public static IServiceCollection AddCustomGraphQL(this IServiceCollection services)
         {
             services.AddGraphQLServer()
-                .AddQueryType<ProductQuery>();
+                .AddQueryType<ProductQuery>()
+                .AddTypeExtension<CategoryQuery>();
             return services;
         }
     }

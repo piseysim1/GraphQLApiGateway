@@ -55,10 +55,10 @@ namespace CategoryGrpcService {
     static readonly grpc::Marshaller<global::CategoryGrpcService.CategoryResponse> __Marshaller_category_CategoryResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CategoryGrpcService.CategoryResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::CategoryGrpcService.EmptyRequest, global::CategoryGrpcService.CategoryListResponse> __Method_GetAllCategory = new grpc::Method<global::CategoryGrpcService.EmptyRequest, global::CategoryGrpcService.CategoryListResponse>(
+    static readonly grpc::Method<global::CategoryGrpcService.EmptyRequest, global::CategoryGrpcService.CategoryListResponse> __Method_GetAllCategories = new grpc::Method<global::CategoryGrpcService.EmptyRequest, global::CategoryGrpcService.CategoryListResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetAllCategory",
+        "GetAllCategories",
         __Marshaller_category_EmptyRequest,
         __Marshaller_category_CategoryListResponse);
 
@@ -112,9 +112,9 @@ namespace CategoryGrpcService {
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::CategoryGrpcService.CategoryListResponse GetAllCategory(global::CategoryGrpcService.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::CategoryGrpcService.CategoryListResponse GetAllCategories(global::CategoryGrpcService.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetAllCategory(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetAllCategories(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
       /// Sends a greeting
@@ -123,9 +123,9 @@ namespace CategoryGrpcService {
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::CategoryGrpcService.CategoryListResponse GetAllCategory(global::CategoryGrpcService.EmptyRequest request, grpc::CallOptions options)
+      public virtual global::CategoryGrpcService.CategoryListResponse GetAllCategories(global::CategoryGrpcService.EmptyRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_GetAllCategory, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllCategories, null, options, request);
       }
       /// <summary>
       /// Sends a greeting
@@ -136,9 +136,9 @@ namespace CategoryGrpcService {
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::CategoryGrpcService.CategoryListResponse> GetAllCategoryAsync(global::CategoryGrpcService.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::CategoryGrpcService.CategoryListResponse> GetAllCategoriesAsync(global::CategoryGrpcService.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetAllCategoryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetAllCategoriesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
       /// Sends a greeting
@@ -147,9 +147,9 @@ namespace CategoryGrpcService {
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::CategoryGrpcService.CategoryListResponse> GetAllCategoryAsync(global::CategoryGrpcService.EmptyRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::CategoryGrpcService.CategoryListResponse> GetAllCategoriesAsync(global::CategoryGrpcService.EmptyRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_GetAllCategory, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllCategories, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::CategoryGrpcService.CategoryResponse GetCategoryById(global::CategoryGrpcService.CategoryByIdRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))

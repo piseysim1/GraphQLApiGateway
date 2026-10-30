@@ -1,32 +1,41 @@
 ﻿using CategoryGrpcService;
 using GraphQLApiGateway.Types;
-using CategoryListResponse = GraphQLApiGateway.Types.CategoryListResponse;
 
 namespace GraphQLApiGateway.Queries
 {
+    [ExtendObjectType(typeof(ProductQuery))]
     public class CategoryQuery
     {
-        public async Task<CategoryListResponse> GetProductDetailsById(int id,
-           [Service] CategoryService.CategoryServiceClient grpcClient)
+        
+        public async Task<CategoryType> GetCategoryDetailsById(
+            int id,
+            [Service] CategoryService.CategoryServiceClient grpcClient)
         {
-          
-            var grpcRequest = new CategoryByIdRequest { Id = id };
-            var response = await grpcClient.GetCategoryByIdAsync(grpcRequest);
+            var grpcRequest = new CategoryByIdRequest
+            {
+                Id = id
+            };
 
-           
-            return new CategoryListResponse
+            var response = await grpcClient.GetCategoryByIdAsync(
+                grpcRequest
+            );
+
+            return new CategoryType
             {
                 Id = response.Id,
                 Name = response.Name,
                 Note = response.Note
-
             };
-         }
-        
-        public async Task<IEnumerable<CategoryType>> GetAllProduct([Service] CategoryService.CategoryServiceClient grpcClient)
+        }
+
+        // Get all categories
+        public async Task<IEnumerable<CategoryType>> GetAllCategories(
+            [Service] CategoryService.CategoryServiceClient grpcClient)
         {
-            var response = await grpcClient.GetAllCategoryAsync(
-                new EmptyRequest());
+            var response = await grpcClient.GetAllCategoriesAsync(
+                new EmptyRequest()
+            );
+
             return response.Categories.Select(c => new CategoryType
             {
                 Id = c.Id,
@@ -34,6 +43,5 @@ namespace GraphQLApiGateway.Queries
                 Note = c.Note
             });
         }
-
     }
 }

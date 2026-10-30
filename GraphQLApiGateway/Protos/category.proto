@@ -4,7 +4,7 @@ option csharp_namespace = "CategoryGrpcService";
 
 service CategoryService {
   // Sends a greeting
-  rpc GetAllCategory (EmptyRequest) returns (CategoryListResponse);
+  rpc GetAllCategories (EmptyRequest) returns (CategoryListResponse);
   rpc GetCategoryById (CategoryByIdRequest) returns (CategoryResponse);
 }
 
